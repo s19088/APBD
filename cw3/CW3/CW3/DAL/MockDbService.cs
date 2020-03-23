@@ -8,7 +8,7 @@ namespace CW3.DAL
 {
     public class MockDbService : IDbService
     {
-        private static IEnumerable<Student> _students;
+        private static /*IEnumerable*/ List<Student> _students;
 
         MockDbService()
         {
@@ -20,12 +20,9 @@ namespace CW3.DAL
             };
         }
 
-        public void AddStudent(Student student)
-        {
-            _students.Append(student);
-        }
+       
 
-        public IEnumerable<Student> GetStudents()
+        public /*IEnumerable*/List<Student> GetStudents()
         {
            return _students;
         }

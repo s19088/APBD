@@ -8,13 +8,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CW3.Controllers
+    /* Metody Http z pierwszych zadan zmienione by wspoldzialy z lista I INTERFACE IDbService pierwotny kod w komentarzach
+     Ienumerable zmieniony na List by dalo sie usuwac i dodawac objekty do listy
+     W przypadku Ienumerable to w sumie tylko iterator*/
 {
     [Route("api/students")]
     [ApiController]
     public class StudentController : ControllerBase
     {
         private readonly IDbService _dbService;
-       public StudentController(IDbService dbService)
+        public StudentController(IDbService dbService)
         {
             _dbService = dbService;
         }
@@ -39,22 +42,23 @@ namespace CW3.Controllers
             {
                 return NotFound("WRRR");
             }*/
-            foreach(Student student in _dbService.GetStudents()){
-                if (student.IdStudent ==student.IdStudent)
+            foreach (Student student in _dbService.GetStudents())
+            {
+                if (student.IdStudent == id)
                 {
                     return Ok(student);
                 }
-                else
-                {
-                    return NotFound("nie znaleziono studenta o podanym id");
-                }
             }
+            return NotFound("nie znaleziono studenta o podanym id");
+
+
         }
         [HttpPost]
-        public IActionResult CreateStudent(Student student)
+        public IActionResult Create(Student student)
         {
             student.IndexNumber = $"S{new Random().Next(1, 2000)}";
-            _dbService.AddStudent(student);
+
+            _dbService.GetStudents().Add(student);
             return Ok(student);
         }
 
@@ -71,16 +75,15 @@ namespace CW3.Controllers
                 return NotFound("nima");*/
             foreach (Student student in _dbService.GetStudents())
             {
-                if (student.IdStudent == student.IdStudent)
+                if (student.IdStudent == id)
                 {
-                    student.IndexNumber = $"S{new Random().Next(1, 2000)}";// aktuali
+                    student.IndexNumber = $"S{new Random().Next(1, 2000)}";//symbolicczna  aktualizacja nowa eska
                     return Ok(" Ąktualizacja dokończona");// zakładam ,ze w przypadku tej apki put ma aktualizowac studentow wiec szuka istniejacych jesli sa OK jesli nie
                 }
-                else
-                {
-                    return NotFound("nie znaleziono studenta o podanym id");
-                }
             }
+            return NotFound("nie znaleziono studenta o podanym id");
+
+
         }
         [HttpDelete("{id}")]
 
@@ -99,13 +102,13 @@ namespace CW3.Controllers
             {
                 if (student.IdStudent == id)
                 {
-                    student = null;
+                    _dbService.GetStudents().Remove(student);
                     return Ok(" Usuwanie ukończone");
                 }
-                else
-                {
-                    return NotFound("nie znaleziono studenta o podanym id");
-                }
             }
+            return NotFound("nie znaleziono studenta o podanym id");
+
+
         }
+    }
 }
