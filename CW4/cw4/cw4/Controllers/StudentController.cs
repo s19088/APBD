@@ -52,10 +52,10 @@ namespace cw4.Controllers
                 using(var com=new SqlCommand())
             {
                 com.Connection = client;
-                string SqlId = "'" + id + "'";//SQLINjection https://localhost:5001/api/students/s101';Drop%20Table%20Student--  takim zapytaniem usunalem sobie tabele w sumie mozna by cala baze
+                string SqlId = "'" + id + "'";//SQLINjection localhost:5001/api/students/s101';Drop%20Table%20Student--  takim zapytaniem usunalem sobie tabele, w sumie mozna by tym sposobem cala baze usunac
                 com.CommandText = "Select * from Studies inner join enrollment on studies.idStudy=enrollment.idStudy" +
-                    " inner join Student on enrollment.idEnrollment=student.idEnrollment where IndexNumber=" + SqlId;
-               
+                    " inner join Student on enrollment.idEnrollment=student.idEnrollment where IndexNumber= @id";//+SqlId;
+                com.Parameters.AddWithValue("id", id);               
 
                 client.Open();
                 var dr = com.ExecuteReader();
