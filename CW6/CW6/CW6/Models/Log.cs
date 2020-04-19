@@ -11,5 +11,6 @@ namespace CW6.Models
         public string Method { get; set; }
         public string QueryString { get; set; }
         public string Body { get; set; }
+        public DateTime Date { get; set; }
     }
 }

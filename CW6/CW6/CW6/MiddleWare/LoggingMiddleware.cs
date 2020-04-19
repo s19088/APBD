@@ -29,7 +29,7 @@ namespace CW6.Middleware
                 log.Method = context.Request.Method;//get, post etc.
                 log.QueryString = context.Request.QueryString.ToString();
                 //log.Body= "";
-
+                log.Date = DateTime.Now;
                 using(var reader = new StreamReader(context.Request.Body, Encoding.UTF8, true, 1024, true))
                 {
                     log.Body = await reader.ReadToEndAsync();

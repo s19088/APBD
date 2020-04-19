@@ -21,7 +21,7 @@ namespace CW6.Models
 
         public string Semester { get; set; }
 
-        public string ToString()
+        public override string ToString()
         {
             return IndexNumber + " " + FirstName + " " + LastName + " " + BirthDate + " " + Semester + " " + Studies;
         }

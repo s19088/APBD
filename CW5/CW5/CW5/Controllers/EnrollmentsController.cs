@@ -19,6 +19,7 @@ namespace CW5.Controllers
             st.Studies = request.Studies;
             st.Semester = "1";
             st.LastName = request.LastName;
+            st.Studies = request.Studies;
 
             using (var connection = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19088;Integrated Security=True"))
             using (var command = new SqlCommand())
@@ -27,13 +28,14 @@ namespace CW5.Controllers
                 command.Connection = connection;
                 connection.Open();
                 var transaction = connection.BeginTransaction();
+                command.Transaction = transaction;//naprawia blad z 38 linii
                 try
                 {
 
 
                     command.CommandText = "select IdStudies from Studies where name=@name";
-                    command.Parameters.AddWithValue("name", request.Studies);
-
+                    command.Parameters.AddWithValue("name", st.Studies);
+                    
                     var dr = command.ExecuteReader();// z powodu transaction w linijce 30 ExecuteReader wyrzuca Exception, nie znalazłem sposobu by obejść 
                     // a na zajeciach czy wykladzie nie był wspomniany co z tym zrobić
                     //kod pisany zgodnie z tym co na wykładzie
@@ -98,6 +100,8 @@ namespace CW5.Controllers
                 command.Connection = connection;
                 connection.Open();
                 var transaction = connection.BeginTransaction();
+
+                command.Transaction = transaction;
 
                 try
                 {

@@ -9,5 +9,6 @@ namespace CW6.Services
    public interface IStudentDbService
     {
         public Student GetStudent(string Index);
+        public List<Student> GetStudents();
     }
 }

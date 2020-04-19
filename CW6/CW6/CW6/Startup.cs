@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace CW6
 {
@@ -30,7 +31,7 @@ namespace CW6
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStudentDbService, SqlServerStudentDbService>();
-            services.AddScoped<IOService, LogWrtiter>();
+            services.AddScoped<IOService, LogWriter>();
             services.AddControllers();
         }
 
@@ -42,7 +43,7 @@ namespace CW6
                 app.UseDeveloperExceptionPage();
             }
             app.UseMiddleware<LoggingMiddleware>();
-            app.UseWhen(context => context.Request.Path.ToString().Contains("eska"), app =>//api/students/eska?Index=s19088
+            app.UseWhen(context => context.Request.Path.ToString().Contains("eska"), app =>//api/students/eska
              {
                  app.Use(async (context, next) =>
                  {
@@ -59,6 +60,8 @@ namespace CW6
                          await context.Response.WriteAsync("nie ma studenta otym indeksie");
                          return;
                      }
+                     context.Response.StatusCode = StatusCodes.Status200OK;
+                     await context.Response.WriteAsync(JsonConvert.SerializeObject(student));
                      await next();
                  });
              });

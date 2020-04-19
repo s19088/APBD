@@ -1,0 +1,14 @@
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T17:35:35.1278125+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T17:39:22.955219+02:00"}
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T17:52:32.2760081+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T17:55:01.9931767+02:00"}
+{"Path":"/api/students/eska","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T17:55:47.3296448+02:00"}
+{"Path":"/favicon.ico","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T17:55:48.568568+02:00"}
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T18:01:18.1104727+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T18:01:33.56402+02:00"}
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T18:07:32.7528782+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T18:07:45.3239906+02:00"}
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T18:14:28.1536214+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T18:14:43.7145709+02:00"}
+{"Path":"/api/students","Method":"GET","QueryString":"","Body":"","Date":"2020-04-19T18:24:53.3317052+02:00"}
+{"Path":"/api/students/eska/","Method":"GET","QueryString":"","Body":"{\n    \"Index\": \"s1234\"\n}","Date":"2020-04-19T18:25:07.8521796+02:00"}
